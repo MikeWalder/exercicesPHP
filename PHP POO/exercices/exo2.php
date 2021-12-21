@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exo 1</title>
+    <title>Exo 2</title>
     <style>
         .container{
             display: flex;
-            
-            justify-content: space-around;
+            flex-flow: column wrap;
+            justify-content: flex-start;
         }
         .card{
             border: 1px solid black;
+            background-color: lightcyan;
+            margin: 0 auto;
         }
         .card img {
             height: 180px;
+        }
+        .blue {
+            color: cornflowerblue;
+            font-size: 1.5em;
+            text-align: center;
         }
     </style>
 </head>
@@ -27,19 +34,24 @@
     <div class="container">
     <?php
         require_once("classes/fruits.class.php");
+        require_once("classes/panier.class.php");
 
         $pomme1 = new Fruits(Fruits::POMME, 150);
-        $pomme2 = new Fruits(Fruits::POMME, 220);
-        $cerise1 = new Fruits(Fruits::CERISE, 80);
-        $cerise2 = new Fruits(Fruits::CERISE, 95);
         $banane1 = new Fruits(Fruits::BANANE, 45);
-        $banane2 = new Fruits(Fruits::BANANE, 12.5);
-        $fruits = [$pomme1, $cerise2, $banane1, $cerise1, $pomme2, $banane2];
+        $cerise2 = new Fruits(Fruits::CERISE, 15.5);
         
-        foreach($fruits as $fruit){
-            echo $fruit;
-        }
+        $panier1 = new Panier(); // Création d'un panier
 
+        $panier1->addFruit($pomme1);
+        $panier1->addFruit($banane1);
+
+        echo $panier1;
+
+        $panier2 = new Panier();
+        $panier2->addFruit($cerise2); // alimentation de notre objet
+        $panier2->addFruit($pomme1);
+
+        echo $panier2;
     ?>
     </div>
 </body>
