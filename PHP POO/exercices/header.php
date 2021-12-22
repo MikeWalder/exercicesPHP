@@ -5,6 +5,8 @@
         <li><a href="exo2.php">Exo 2</a></li>
         <li><a href="exo3.php">Exo 3</a></li>
         <li><a href="exo4.php">Exo 4</a></li>
+        <li><a href="exo5.php">Exo 5</a></li>
+        <li><a href="exo6.php">Exo 6</a></li>
     </ul>
 </nav>
 
