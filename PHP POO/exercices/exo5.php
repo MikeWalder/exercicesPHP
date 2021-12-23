@@ -41,7 +41,7 @@
         }
 
         public function afficherDegats(){
-            echo "<div class='affichageDegats'>Dégâts infligés : " . $this->calculDegat() . " dégâts</div><br>";
+            echo "< div class='affichageDegats'>Dégâts infligés : " . $this->calculDegat() . " dégâts</ div>< br>";
         }
     }
 
