@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exo 9</title>
     <style>
-        .boxClass {
+        .afficheVoiture {
             color: cornflowerblue;
             font-size: 1.5em;
             padding: 2vh 0 0 3vw;
@@ -55,6 +55,16 @@
         public function setEstElectrique($estElectrique){ $this->estElectrique = $estElectrique; }
         public function getPrix(){ return $this->prix; }
         public function setPrix($prix){ $this->prix = $prix; }
+
+        public function __toString(){
+            $txt = "< div class='afficheVoiture'>";
+                $txt .= "" . $this->marque . " " . $this->modele . ", couleur " . $this->couleur . "< br> ";
+                $txt .= "" . $this->nbPortes . " portes< br> ";
+                $txt .= $this->estElectrique ? "Voiture électrique< br>" : "Voiture non électrique< br>";
+                $txt .= $this->prixTTC . "€ TTC< br>";
+            $txt .= "< /div>";
+            return $txt;
+        }
     }
     </pre>
     <h3>Résultat : </h3>
@@ -93,12 +103,26 @@
             public function setEstElectrique($estElectrique){ $this->estElectrique = $estElectrique; }
             public function getPrix(){ return $this->prix; }
             public function setPrix($prix){ $this->prix = $prix; }
+
+            public function __toString(){
+                $txt = "<div class='afficheVoiture'>";
+                    $txt .= "" . $this->marque . " " . $this->modele . ", couleur " . $this->couleur . "<br> ";
+                    $txt .= "" . $this->nbPortes . " portes<br> ";
+                    $txt .= $this->estElectrique ? "Voiture électrique<br>" : "Voiture non électrique<br>";
+                    $txt .= $this->prixTTC . "€ TTC<br>";
+                $txt .= "</div>";
+                return $txt;
+            }
         }
         
-        $v1 = new voiture("Yotota", "Ryas", "noir", Voiture::MINI, 18500);
-        $v2 = new voiture("Yotota", "Risau", "rouge", Voiture::NORMAL, 15500);
+        $v1 = new voiture("Yotota", "Ryas", "noir", Voiture::MINI, true, 18500);
+        $v2 = new voiture("Yotota", "Risau", "rouge", Voiture::NORMAL, false, 15500);
         $v2->setNbPortes(3);
-        $v3 = new voiture("Troen", "5C", "rouge", Voiture::MINI, 16500);
+        $v3 = new voiture("Troen", "5C", "rouge", Voiture::MINI, true, 16500);
+        echo $v1;
+        echo $v2;
+        echo $v3;
+
     ?>
 </body>
 </html>
