@@ -12,6 +12,7 @@
         <li><a href="exo9.php">Exo 9</a></li>
         <li><a href="exo10.php">Exo 10</a></li>
         <li><a href="exo11.php">Exo 11</a></li>
+        <li><a href="exo12.php">Exo 12</a></li>
     </ul>
 </nav>
 
