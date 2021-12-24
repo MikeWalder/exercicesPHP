@@ -10,6 +10,8 @@
         <li><a href="exo7.php">Exo 7</a></li>
         <li><a href="exo8.php">Exo 8</a></li>
         <li><a href="exo9.php">Exo 9</a></li>
+        <li><a href="exo10.php">Exo 10</a></li>
+        <li><a href="exo11.php">Exo 11</a></li>
     </ul>
 </nav>
 
@@ -36,7 +38,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        padding-left: 30%;
+        padding-left: 18%;
     }
     li {
         float: left;
