@@ -4,15 +4,6 @@
         private $policiers;
         private $romans;
 
-        /* public function __construct($titre, $auteur){
-            $this->titre = $titre;
-            $this->auteur = $auteur;
-        } */
-
-        /* public function ajouterLivres($livre){
-            $this->romans[] = $livre;
-        } */
-
         public function __construct(){
 
         }

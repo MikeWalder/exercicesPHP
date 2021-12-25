@@ -27,88 +27,136 @@
     <h2>Exercice 12 : classe Livre</h2>
     <h3>Ecriture du code :</h3>
     <pre>
-    class Voiture{
-        private $marque;
-        private $modele;
-        private $couleur;
-        private $nbPortes;
-        private $estElectrique;
-        private $prixTTC;
+    <h3><b>Fichier livre.classe.php</b></h3><br>
+    class Livre{
+        private $titre;
+        private $nbPages;
+        private $genre;
+        private $couleurCouverture;
+        private $estTradEnAnglais;
 
-        const MINI = 3;
-        const NORMAL = 5;
-        const TVA = 20;
-
-        public static $voitures;
-
-        public function __construct($marque, $modele, $couleur, $nbPortes, $estElectrique, $prixHT){
-            $this->marque = $marque;
-            $this->modele = $modele;
-            $this->couleur = $couleur;
-            $this->nbPortes = $nbPortes;
-            $this->estElectrique = $estElectrique;
-            $this->prixTTC = $prixHT + $prixHT * (self::TVA / 100);
-            self::$voitures[] = $this;
+        public function __construct($nom, $nb, $genre, $couleur, $traduction){
+            $this->titre = $nom;
+            $this->nbPages = $nb;
+            $this->genre = $genre;
+            $this->couleurCouverture = $couleur;
+            $this->estTradEnAnglais = $traduction;
         }
 
-        public function getMarque(){ return $this->marque; }
-        public function setMarque($marque){ $this->marque = $marque;  }
-        public function getModele(){ return $this->modele; }
-        public function setModele($modele){ $this->modele = $modele; }
-        public function getCouleur(){ return $this->couleur; }
-        public function setCouleur($couleur){ $this->couleur = $couleur; }
-        public function getnbPortes(){ return $this->nbPortes; }
-        public function setnbPortes($nbPortes){ $this->nbPortes = $nbPortes; }
-        public function getEstElectrique(){ return $this->estElectrique; }
-        public function setEstElectrique($estElectrique){ $this->estElectrique = $estElectrique; }
-        public function getPrix(){ return $this->prix; }
-        public function setPrix($prix){ $this->prix = $prix; }
+        public function changerCouleur($couleur){
+            $this->couleurCouverture = $couleur;
+        }
 
-        public static function afficherNomMarque($marque){
-            echo "< span class='results'>Voici les résultats de la marque " . $marque . " :< /span>< br>";
-            for($i = 0; $i < count(self::$voitures); $i++){
-                if(self::$voitures[$i]->getMarque() === $marque){
-                    echo self::$voitures[$i];
-                }
+        public function traductionAnglaise(){
+            $this->estTradEnAnglais == true;
+        }
+
+        public function ajouterPages($nbAjouter){
+            $this->nbPages += $nbAjouter;
+        }
+
+        public function getGenre(){
+            return $this->genre;
+        }
+
+        public function setGenre($genre){
+            $this->genre = $genre;
+        }
+
+        public function afficherLivre(){
+            echo "< div class='affichageLivre'>" . $this->titre . ", " . $this->nbPages . " pages, couverture " .$this->couleurCouverture . ", " . $this->affichageTrad($this->estTradEnAnglais) . "< /div>< br>"; 
+        }
+
+        private function affichageTrad($traduction){
+            if($traduction == false){
+                return "non traduit en anglais";
+            } else if($traduction == true){
+                return "traduit en anglais";
             }
         }
 
         public function __toString(){
-            $txt = "< div class='afficheVoiture'>";
-                $txt .= "" . $this->marque . " " . $this->modele . ", couleur " . $this->couleur . "< br> ";
-                $txt .= "" . $this->nbPortes . " portes< br> ";
-                $txt .= $this->estElectrique ? "Voiture électrique< br>" : "Voiture non électrique< br>";
-                $txt .= $this->prixTTC . "€ TTC< br>";
+            $txt = "< div class='afficheLivre'>";
+                $txt .= "Titre : " . $this->titre . "< br>";
+                $txt .= "Pages : " . $this->nbPages . "< br>";
+                $txt .= "Genre : " . $this->genre . "< br>";
+                $txt .= "Couleur couverture : " . $this->couleurCouverture . "< br>";
+                $txt .= "Traduction anglaise : ";
+                $txt .= $this->estTradEnAnglais ? "Oui< br>" : "Non< br>";
             $txt .= "< /div>";
             return $txt;
         }
     }
-    
-    $v1 = new voiture("Yotota", "Ryas", "noir", Voiture::MINI, true, 18500);
-    $v2 = new voiture("Yotota", "Risau", "rouge", Voiture::NORMAL, false, 15500);
-    $v2->setNbPortes(3);
-    $v3 = new voiture("Troen", "5C", "rouge", Voiture::MINI, true, 16500);
 
-    for($i = 0; $i < count(Voiture::$voitures); $i++){
-        echo Voiture::$voitures[$i];
-        echo "********************* < br>";
+    <hr>
+    <h3><b>Fichier bibliotheque.classe.php</b></h3><br>
+
+    class Bibliotheque{
+        private $bds;
+        private $policiers;
+        private $romans;
+
+        public function __construct(){
+
+        }
+
+        public function ajouterGenreLivre($genreLivre){
+            if($genreLivre->getGenre() === "bd"){
+                $this->bds[] = $genreLivre;
+            } else if($genreLivre->getGenre() === "policier"){
+                $this->policiers[] = $genreLivre;
+            } else if($genreLivre->getGenre() === "roman"){
+                $this->romans[] = $genreLivre;
+            } 
+            
+        }
+
+        public function __toString(){
+            $txt = "< div class='bibliotheque'>";
+                $txt .= "< b>********** ROMANS **********< /b>< br>";
+                for($i = 0; $i < count($this->romans); $i++){
+                    $txt .= $this->romans[$i] . "< br>";
+                }
+                $txt .= "< b>********** BDS **********< /b>< br>";
+                for($i = 0; $i < count($this->bds); $i++){
+                    $txt .= $this->bds[$i] . "< br>";
+                }
+                $txt .= "< b>********** POLICIERS **********< /b>< br>";
+                for($i = 0; $i < count($this->policiers); $i++){
+                    $txt .= $this->policiers[$i] . "< br>";
+                }
+            $txt .= "< /div>";
+            return $txt;
+        }
     }
 
-    Voiture::afficherNomMarque("Yotota");
+    <hr>
+    <h3><b>Instanciation des classes et résultats</b></h3>
+    require("classes/bibliotheque.classe.php");
+    require("classes/livre.classe.php");
+
+    $livre1 = new Livre("L'algorithmique selon H2Prog", 500, "roman", "noire", true);
+    $livre2 = new Livre("Le virus asiatique", 350, "roman", "rouge", false);
+    $livre3 = new Livre("La France du 19ème siècle", 56, "bd", "bleu", true);
+    $livre4 = new Livre("Les Vikings", 32, "bd", "orange", true);
+    $livre5 = new Livre("L'affaire des rhésus jaunes", 268, "policier", "bleu", true);
+
+
+    $biblioABC = new Bibliotheque();
+    $biblioABC->ajouterGenreLivre($livre1);
+    $biblioABC->ajouterGenreLivre($livre2);
+    $biblioABC->ajouterGenreLivre($livre3);
+    $biblioABC->ajouterGenreLivre($livre4);
+    $biblioABC->ajouterGenreLivre($livre5);
+
+    echo $biblioABC;
+    <hr>
     </pre>
     <h3>Résultat : </h3>
     <?php
 
-        
         require("classes/bibliotheque.classe.php");
         require("classes/livre.classe.php");
-        
-        /* $v1 = new voiture("Yotota", "Ryas", "noir", Voiture::MINI, true, 18500);
-        $v1->setEstElectrique(false);
-        $v2 = new voiture("Yotota", "Risau", "rouge", Voiture::NORMAL, false, 15500);
-        $v2->setNbPortes(3);
-        $v3 = new voiture("Troen", "5C", "rouge", Voiture::MINI, true, 16500);
-        $v3->setPrix(14500); */
 
         $livre1 = new Livre("L'algorithmique selon H2Prog", 500, "roman", "noire", true);
         $livre2 = new Livre("Le virus asiatique", 350, "roman", "rouge", false);
@@ -125,10 +173,6 @@
         $biblioABC->ajouterGenreLivre($livre5);
 
         echo $biblioABC;
-        /* $parcMga = new ParcAuto("Parc MGA", "54 rue des Ardennes");
-        $parcMga->ajouterVoitures($v1);
-        $parcMga->ajouterVoitures($v2);
-        $parcMga->ajouterVoitures($v3); */
 
     ?>
 </body>

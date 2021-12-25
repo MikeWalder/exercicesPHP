@@ -46,12 +46,6 @@
             }
         }
 
-        /* public function basculerEnAnglais(){
-            $this->traductionAnglaise();
-            $this->ajouterPages(5);
-            $this->changerCouleur("verte");
-        } */
-
         public function __toString(){
             $txt = "<div class='afficheLivre'>";
                 $txt .= "Titre : " . $this->titre . "<br> ";
