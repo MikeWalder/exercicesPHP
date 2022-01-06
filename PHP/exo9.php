@@ -31,9 +31,9 @@
         include("header.php");
 
         $tab1 = [
-            "Nom" => "Serges",
+            "Nom" => "Clara",
             "Age" => 45,
-            "Sexe" => "Homme",
+            "Sexe" => "Femme",
             "Force" => 6,
             "Agilité" => 5,
             "Img" => "clara.png"
@@ -47,9 +47,9 @@
             "Img" => "eric.png"
         ];
         $tab3 = [
-            "Nom" => "Mike",
+            "Nom" => "Laura",
             "Age" => 33,
-            "Sexe" => "Homme",
+            "Sexe" => "Femme",
             "Force" => 4,
             "Agilité" => 5.5,
             "Img" => "laura.png"

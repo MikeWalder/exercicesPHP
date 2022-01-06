@@ -13,6 +13,7 @@
         <li><a href="exo10.php">Exo 10</a></li>
         <li><a href="exo11.php">Exo 11</a></li>
         <li><a href="exo12.php">Exo 12</a></li>
+        <li><a href="db_connexion_class.php">PDO Class</a></li>
     </ul>
 </nav>
 
@@ -39,14 +40,14 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        padding-left: 18%;
+        padding-left: 10%;
     }
     li {
         float: left;
     }
     li a {
         color: white;
-        padding: 20px;
+        padding: 25px;
         text-decoration: none;
         display: block;
         font-size: 22px;
